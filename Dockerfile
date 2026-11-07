@@ -34,9 +34,15 @@
 #   if you want container-local time in another zone. Wallos also
 #   has a per-user timezone setting in its admin UI.
 # - No Docker HEALTHCHECK: rely on Railway's external
-#   healthcheckPath (/health.php). The Alpine base ships curl, but
-#   the in-image HEALTHCHECK is dropped in favour of the platform
-#   probe, per house style.
+#   healthcheckPath. The Alpine base ships curl, but the in-image
+#   HEALTHCHECK is dropped in favour of the platform probe, per
+#   house style. The probe is a static /healthcheck file shipped
+#   by this wrapper — the Railway API rejects dotted healthcheck
+#   paths, so upstream's own /health.php cannot be used as the
+#   platform probe (it still exists and answers 200 "OK").
+#   /healthcheck is served directly by nginx as a static file and
+#   proves the web server is up; it is not a database check.
+#   (The LimeSurvey release hit the same dotted-path rejection.)
 #
 # Upstream: Wallos v5.10.4 (GPL-3.0), image pinned by manifest
 # digest, verified 2026-11-07 via the Docker Hub API
@@ -54,6 +60,7 @@ FROM bellamy/wallos@sha256:78b73a32ae24bcca67d6f4b96ca76fe29ee8da5e8df1769df1e61
 USER root
 
 COPY entrypoint.sh /railway-entrypoint.sh
+COPY healthcheck /var/www/html/healthcheck
 RUN chmod +x /railway-entrypoint.sh
 
 # Baked constants (see header): container timezone; the data dirs
