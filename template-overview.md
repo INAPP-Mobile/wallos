@@ -1,4 +1,4 @@
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/deploy/wallos?utm_campaign=wallos)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/deploy/wallos-2?utm_campaign=wallos)
 
 ![Wallos subscriptions dashboard](https://raw.githubusercontent.com/INAPP-Mobile/wallos/main/assets/wallos-screenshot.png)
 

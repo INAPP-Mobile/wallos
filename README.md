@@ -2,7 +2,7 @@
 
 Wallos is a self-hosted subscription tracker: add every recurring subscription, see what it costs per month and per year, set budgets per category, and get reminded before renewals. It is a single lightweight PHP service with an SQLite database — no companion database — built for anyone who wants their subscription spending on their own server instead of a SaaS.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/deploy/wallos?utm_campaign=wallos)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/deploy/wallos-2?utm_campaign=wallos)
 
 ![Wallos subscriptions dashboard](assets/wallos-screenshot.png)
 
